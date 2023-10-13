@@ -6,6 +6,7 @@ import (
 	"golbat/config"
 	db2 "golbat/db"
 	"golbat/decoder"
+	"golbat/docs"
 	"golbat/external"
 	pb "golbat/grpc"
 	"golbat/webhooks"
@@ -20,10 +21,11 @@ import (
 	"github.com/golang-migrate/migrate/v4"
 	"github.com/jmoiron/sqlx"
 	log "github.com/sirupsen/logrus"
+	"github.com/swaggo/files"       // swagger embed files
+	"github.com/swaggo/gin-swagger" // gin-swagger middleware
 	ginlogrus "github.com/toorop/gin-logrus"
-	"google.golang.org/protobuf/proto"
-
 	"golbat/pogo"
+	"google.golang.org/protobuf/proto"
 
 	"github.com/gin-gonic/gin"
 	"github.com/go-sql-driver/mysql"
@@ -243,9 +245,12 @@ func main() {
 	} else {
 		r.Use(gin.Recovery())
 	}
+
 	r.POST("/raw", Raw)
 	r.GET("/health", GetHealth)
+	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
+	docs.SwaggerInfo.BasePath = "/api"
 	apiGroup := r.Group("/api", AuthRequired())
 	apiGroup.POST("/clear-quests", ClearQuests)
 	apiGroup.POST("/quest-status", GetQuestStatus)

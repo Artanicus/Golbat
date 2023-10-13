@@ -309,8 +309,13 @@ type ApiLocation struct {
 	Longitude float64 `json:"lon"`
 }
 
-type GolbatClearQuest struct {
+type GolbatFence struct {
 	Fence []ApiLocation `json:"fence"`
+}
+
+type Response struct {
+	Status string  `json:"status"`
+	Data   *string `json:"data"`
 }
 
 func AuthRequired() gin.HandlerFunc {
@@ -328,8 +333,19 @@ func AuthRequired() gin.HandlerFunc {
 	}
 }
 
+// @BasePath /api
+
+// @Summary 	Clear Quests
+// @Schemes
+// @Description Clear Quests in given Fence
+// @Tags 		quest
+// @Accept 		json
+// @Produce 	json
+// @Param 		GolbatFence 	body 	GolbatFence	true 	"Fence"
+// @Success 	200 {object} Response "Success"
+// @Router 		/api/clear-quests [post]
 func ClearQuests(c *gin.Context) {
-	var golbatClearQuest GolbatClearQuest
+	var golbatClearQuest GolbatFence
 	if err := c.BindJSON(&golbatClearQuest); err != nil {
 		log.Warnf("POST /api/clear-quests/ Error during post area %v", err)
 		c.Status(http.StatusInternalServerError)
@@ -360,9 +376,7 @@ func ClearQuests(c *gin.Context) {
 		decoder.ClearQuestsWithinGeofence(ctx, dbDetails, fence)
 	}()
 
-	c.JSON(http.StatusAccepted, map[string]interface{}{
-		"status": "ok",
-	})
+	c.JSON(http.StatusAccepted, &Response{Status: "ok"})
 }
 
 func ReloadGeojson(c *gin.Context) {
@@ -398,6 +412,17 @@ func PokemonScan(c *gin.Context) {
 	c.JSON(http.StatusAccepted, res)
 }
 
+// @BasePath /api
+
+// @Summary 	Pokemon Scan V2
+// @Schemes
+// @Description Scan Pokemon for given request
+// @Tags 		pokemon
+// @Accept 		json
+// @Produce 	json
+// @Param 		decoder.ApiPokemonScan2 	body 	decoder.ApiPokemonScan2	true 	"PokemonScan2"
+// @Success 	200 {array} decoder.ApiPokemonResult "ok"
+// @Router 		/api/pokemon/v2/scan [post]
 func PokemonScan2(c *gin.Context) {
 	var requestBody decoder.ApiPokemonScan2
 
@@ -452,8 +477,19 @@ func PokemonSearch(c *gin.Context) {
 	c.JSON(http.StatusAccepted, res)
 }
 
+// @BasePath /api
+
+// @Summary 	Quests Status
+// @Schemes
+// @Description Get Status of Quests in given Fence
+// @Tags 		quest
+// @Accept 		json
+// @Produce 	json
+// @Param 		GolbatFence 	body 	GolbatFence	true 	"Fence"
+// @Success 	200 {array} db.QuestStatus "ok"
+// @Router 		/api/quest-status [post]
 func GetQuestStatus(c *gin.Context) {
-	var golbatClearQuest GolbatClearQuest
+	var golbatClearQuest GolbatFence
 	if err := c.BindJSON(&golbatClearQuest); err != nil {
 		log.Warnf("POST /api/quest-status/ Error during post area %v", err)
 		c.Status(http.StatusInternalServerError)
