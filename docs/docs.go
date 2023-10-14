@@ -220,34 +220,34 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "atk_iv": {
-                    "$ref": "#/definitions/null.Int"
+                    "type": "integer"
                 },
                 "capture_1": {
-                    "$ref": "#/definitions/null.Float"
+                    "type": "number"
                 },
                 "capture_2": {
-                    "$ref": "#/definitions/null.Float"
+                    "type": "number"
                 },
                 "capture_3": {
-                    "$ref": "#/definitions/null.Float"
+                    "type": "number"
                 },
                 "cell_id": {
-                    "$ref": "#/definitions/null.Int"
+                    "type": "integer"
                 },
                 "changed": {
                     "type": "integer"
                 },
                 "costume": {
-                    "$ref": "#/definitions/null.Int"
+                    "type": "integer"
                 },
                 "cp": {
-                    "$ref": "#/definitions/null.Int"
+                    "type": "integer"
                 },
                 "def_iv": {
-                    "$ref": "#/definitions/null.Int"
+                    "type": "integer"
                 },
                 "display_pokemon_id": {
-                    "$ref": "#/definitions/null.Int"
+                    "type": "integer"
                 },
                 "distance": {
                     "type": "number"
@@ -256,7 +256,7 @@ const docTemplate = `{
                     "type": "integer"
                 },
                 "expire_timestamp": {
-                    "$ref": "#/definitions/null.Int"
+                    "type": "integer"
                 },
                 "expire_timestamp_verified": {
                     "type": "boolean"
@@ -265,13 +265,13 @@ const docTemplate = `{
                     "type": "integer"
                 },
                 "form": {
-                    "$ref": "#/definitions/null.Int"
+                    "type": "integer"
                 },
                 "gender": {
-                    "$ref": "#/definitions/null.Int"
+                    "type": "integer"
                 },
                 "height": {
-                    "$ref": "#/definitions/null.Float"
+                    "type": "number"
                 },
                 "id": {
                     "type": "string"
@@ -283,28 +283,28 @@ const docTemplate = `{
                     "type": "integer"
                 },
                 "iv": {
-                    "$ref": "#/definitions/null.Float"
+                    "type": "number"
                 },
                 "lat": {
                     "type": "number"
                 },
                 "level": {
-                    "$ref": "#/definitions/null.Int"
+                    "type": "integer"
                 },
                 "lon": {
                     "type": "number"
                 },
                 "move_1": {
-                    "$ref": "#/definitions/null.Int"
+                    "type": "integer"
                 },
                 "move_2": {
-                    "$ref": "#/definitions/null.Int"
+                    "type": "integer"
                 },
                 "pokemon_id": {
                     "type": "integer"
                 },
                 "pokestop_id": {
-                    "$ref": "#/definitions/null.String"
+                    "type": "string"
                 },
                 "pvp": {
                     "type": "object",
@@ -316,31 +316,31 @@ const docTemplate = `{
                     }
                 },
                 "seen_type": {
-                    "$ref": "#/definitions/null.String"
+                    "type": "string"
                 },
                 "shiny": {
-                    "$ref": "#/definitions/null.Bool"
+                    "type": "boolean"
                 },
                 "size": {
-                    "$ref": "#/definitions/null.Int"
+                    "type": "integer"
                 },
                 "spawn_id": {
-                    "$ref": "#/definitions/null.Int"
+                    "type": "integer"
                 },
                 "sta_iv": {
-                    "$ref": "#/definitions/null.Int"
+                    "type": "integer"
                 },
                 "updated": {
-                    "$ref": "#/definitions/null.Int"
+                    "type": "integer"
                 },
                 "username": {
-                    "$ref": "#/definitions/null.String"
+                    "type": "string"
                 },
                 "weather": {
-                    "$ref": "#/definitions/null.Int"
+                    "type": "integer"
                 },
                 "weight": {
-                    "$ref": "#/definitions/null.Float"
+                    "type": "number"
                 }
             }
         },
@@ -440,54 +440,6 @@ const docTemplate = `{
                 },
                 "status": {
                     "type": "string"
-                }
-            }
-        },
-        "null.Bool": {
-            "type": "object",
-            "properties": {
-                "bool": {
-                    "type": "boolean"
-                },
-                "valid": {
-                    "description": "Valid is true if Bool is not NULL",
-                    "type": "boolean"
-                }
-            }
-        },
-        "null.Float": {
-            "type": "object",
-            "properties": {
-                "float64": {
-                    "type": "number"
-                },
-                "valid": {
-                    "description": "Valid is true if Float64 is not NULL",
-                    "type": "boolean"
-                }
-            }
-        },
-        "null.Int": {
-            "type": "object",
-            "properties": {
-                "int64": {
-                    "type": "integer"
-                },
-                "valid": {
-                    "description": "Valid is true if Int64 is not NULL",
-                    "type": "boolean"
-                }
-            }
-        },
-        "null.String": {
-            "type": "object",
-            "properties": {
-                "string": {
-                    "type": "string"
-                },
-                "valid": {
-                    "description": "Valid is true if String is not NULL",
-                    "type": "boolean"
                 }
             }
         }
