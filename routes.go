@@ -305,8 +305,8 @@ func Raw(c *gin.Context) {
 /* Should really be in a separate file, move later */
 
 type ApiLocation struct {
-	Latitude  float64 `json:"lat"`
-	Longitude float64 `json:"lon"`
+	Latitude  float64 `json:"lat" example:"40.730610" description:"Latitude of Location"`
+	Longitude float64 `json:"lon" example:"-73.935242" description:"Longitude of Location"`
 }
 
 type GolbatFence struct {
@@ -314,7 +314,7 @@ type GolbatFence struct {
 }
 
 type Response struct {
-	Status string  `json:"status"`
+	Status string  `json:"status" example:"ok"`
 	Data   *string `json:"data"`
 }
 
@@ -341,8 +341,8 @@ func AuthRequired() gin.HandlerFunc {
 // @Tags 		quest
 // @Accept 		json
 // @Produce 	json
-// @Param 		GolbatFence 	body 	GolbatFence	true 	"Fence"
-// @Success 	200 {object} Response "Success"
+// @Param 		fence	 body 		GolbatFence		true 	"Fence"
+// @Success 	200 	 {object} 	Response 		"Success"
 // @Router 		/api/clear-quests [post]
 func ClearQuests(c *gin.Context) {
 	var golbatClearQuest GolbatFence
@@ -420,8 +420,8 @@ func PokemonScan(c *gin.Context) {
 // @Tags 		pokemon
 // @Accept 		json
 // @Produce 	json
-// @Param 		scan 	body 	decoder.ApiPokemonScan2	true 	"Pokemon Scan2"
-// @Success 	200 {array} decoder.ApiPokemonResult "ok"
+// @Param 		scan 	body 		decoder.ApiPokemonScan2		true	"Pokemon Scan2"
+// @Success 	200 	{array} 	decoder.ApiPokemonResult 	"ok"
 // @Router 		/api/pokemon/v2/scan [post]
 func PokemonScan2(c *gin.Context) {
 	var requestBody decoder.ApiPokemonScan2
@@ -485,8 +485,8 @@ func PokemonSearch(c *gin.Context) {
 // @Tags 		quest
 // @Accept 		json
 // @Produce 	json
-// @Param 		GolbatFence 	body 	GolbatFence	true 	"Fence"
-// @Success 	200 {array} db.QuestStatus "ok"
+// @Param 		fence	 	body 		GolbatFence		true 	"Fence"
+// @Success 	200 		{array} 	db.QuestStatus 	"ok"
 // @Router 		/api/quest-status [post]
 func GetQuestStatus(c *gin.Context) {
 	var golbatClearQuest GolbatFence

@@ -31,7 +31,7 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "description": "Fence",
-                        "name": "GolbatFence",
+                        "name": "fence",
                         "in": "body",
                         "required": true,
                         "schema": {
@@ -102,7 +102,7 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "description": "Fence",
-                        "name": "GolbatFence",
+                        "name": "fence",
                         "in": "body",
                         "required": true,
                         "schema": {
@@ -414,10 +414,12 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "lat": {
-                    "type": "number"
+                    "type": "number",
+                    "example": 40.73061
                 },
                 "lon": {
-                    "type": "number"
+                    "type": "number",
+                    "example": -73.935242
                 }
             }
         },
@@ -439,7 +441,8 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "status": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "ok"
                 }
             }
         }
