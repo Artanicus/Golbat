@@ -420,7 +420,7 @@ func PokemonScan(c *gin.Context) {
 // @Tags 		pokemon
 // @Accept 		json
 // @Produce 	json
-// @Param 		decoder.ApiPokemonScan2 	body 	decoder.ApiPokemonScan2	true 	"PokemonScan2"
+// @Param 		scan 	body 	decoder.ApiPokemonScan2	true 	"Pokemon Scan2"
 // @Success 	200 {array} decoder.ApiPokemonResult "ok"
 // @Router 		/api/pokemon/v2/scan [post]
 func PokemonScan2(c *gin.Context) {

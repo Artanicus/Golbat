@@ -64,8 +64,8 @@ const docTemplate = `{
                 "summary": "Pokemon Scan V2",
                 "parameters": [
                     {
-                        "description": "PokemonScan2",
-                        "name": "decoder.ApiPokemonScan2",
+                        "description": "Pokemon Scan2",
+                        "name": "scan",
                         "in": "body",
                         "required": true,
                         "schema": {
